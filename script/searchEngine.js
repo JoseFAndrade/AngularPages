@@ -8,7 +8,6 @@ function test(){
   var matchingEntries = [];
   for( const[key, value] of Object.entries(personas)){
     if(key.toUpperCase().indexOf(filter) > -1){
-
       matchingEntries.push(key);
     }
   }
