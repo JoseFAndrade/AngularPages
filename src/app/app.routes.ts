@@ -5,8 +5,8 @@ import {HomeComponent} from '../home/home.component';
 import {PersonaPageComponent} from '../persona-page/persona-page.component';
 
 export const routes: Routes = [
+  { path: '', component: HomeComponent},
   { path: 'personaList', component: PersonaListComponent},
   { path: 'second-component', component: SecondComponent},
-  { path: '', component: HomeComponent},
   { path: 'persona/:name', component: PersonaPageComponent}
 ];

@@ -11,4 +11,6 @@ import {PersonaListComponent} from '../personaList/personaList.component';
 })
 export class AppComponent {
   title = 'AngularPages';
+
+
 }

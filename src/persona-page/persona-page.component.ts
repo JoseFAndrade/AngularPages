@@ -12,7 +12,16 @@ export class PersonaPageComponent {
 
   route: ActivatedRoute = inject(ActivatedRoute);
   personaName = "";
+  personaDict: any = personas;
+  condition: boolean = false;
+
   constructor() {
     this.personaName = String(this.route.snapshot.params['name']);
+    console.log(this.personaDict);
+    this.condition = this.personaName in this.personaDict;
+
+    console.log(this.condition);
+    if("abaddon" in this.personaDict)
+      console.log("yes");
   }
 }
