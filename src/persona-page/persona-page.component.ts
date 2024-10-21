@@ -18,10 +18,22 @@ export class PersonaPageComponent {
   constructor() {
     this.personaName = String(this.route.snapshot.params['name']);
     console.log(this.personaDict);
-    this.condition = this.personaName in this.personaDict;
+    this.condition = checkPersona(this.personaName, this.personaDict);
 
     console.log(this.condition);
     if("abaddon" in this.personaDict)
       console.log("yes");
+
+    function checkPersona(key: any, dict: any){
+      const lowerKey = key.toLowerCase();
+
+      for(const dictKey in dict){
+        if(dictKey.toLowerCase() === lowerKey){
+          return true;
+        }
+      }
+
+      return false;
+    }
   }
 }
