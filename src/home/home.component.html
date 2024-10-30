@@ -5,19 +5,24 @@
 </div>
 <div>
   <h2 class = "center"> Search bar for units</h2>
-  <input id="page-search-input" type = "text" placeholder="Search..." onkeyup="test()" >
+  <input id="page-search-input" type = "text" placeholder="Search..." (keyup.backspace)="delete()" (keyup)="populateTable()" >
   <h3> Results</h3>
-  <table>
+  <table class = "ptable">
+
     <tr>
       <th>Persona</th>
       <th>Arcana</th>
-      @for ()
+      <th>Level</th>
     </tr>
-  </table>
-  <a [routerLink]="['/persona', 'abaddon']">Testing Dynamic Stuff</a>
-  <ul class = "personaResults">
+    @for (persona of personaArray; track $index){
+      <tr>
+        <td> <a [routerLink]="['/persona', persona[0]]"> {{persona[0]}}</a></td>
+        <td> {{persona[1].arcana}} </td>
+        <td> {{persona[1].level}}</td>
+      </tr>
+    }
 
-  </ul>
+  </table>
 </div>
 
 
