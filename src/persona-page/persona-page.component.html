@@ -2,8 +2,73 @@
 
 <p>persona-page works!</p>
 
-@if( condition ){
+@if( persona != null ){
   <p> yes its in there</p>
+
+  <h1> {{personaName}}</h1>
+  <h2> {{persona.arcana}}</h2>
+  <h3>Level: {{persona.level}}</h3>
+
+  <h2> Stats</h2>
+
+  <table>
+    <tr>
+      @for(stat of stats; track $index){
+        <th> {{stat}} </th>
+      }
+    </tr>
+
+    <tr>
+      @for(stat of persona.stats; track $index){
+        <th>{{stat}}</th>
+      }
+    </tr>
+
+  </table>
+  <table>
+    <tr>
+      <th>Item</th>
+      <th>Enhanced item</th>
+    </tr>
+
+    <tr>
+      <td>{{persona.item}}</td>
+      <td>{{persona.itemr}}</td>
+    </tr>
+  </table>
+
+
+  <h1>Skills</h1>
+  <table>
+    <tr>
+      <th>Skill</th>
+      <th>Level</th>
+    </tr>
+
+    @for(skill of Object.keys(persona.skills); track $index){
+      <tr>
+        <th>{{ skill }}</th>
+        <th>{{ persona.skills[skill]}}</th>
+      </tr>
+    }
+
+  </table>
+  <h3> Skill relations</h3>
+  <table>
+    <tr>
+    @for (element of elements; track $index){
+        <th> {{element}} </th>
+    }
+    </tr>
+
+    <tr>
+    @for(each of persona.elems ; track $index){
+        <td> {{each}}  </td>
+    }
+    </tr>
+
+  </table>
+
 } @else {
   <p> not in there</p>
 }

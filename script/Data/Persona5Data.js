@@ -1,9 +1,9 @@
 
 
 
+const stats = ['Strength', 'Magic', 'Endurance', 'Agility', 'Luck']
 
-
-const elements = ['physical', 'gun', 'fire', 'ice', 'electric', 'wind', 'psychic', 'nuclear', 'bless', 'curse', 'healing','ailment','almighty']
+const elements = ['physical', 'gun', 'fire', 'ice', 'electric', 'wind', 'psychic', 'nuclear', 'bless', 'curse']
 
 const elementResistance = {
   "ab" : "absorb",

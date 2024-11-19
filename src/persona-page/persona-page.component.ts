@@ -1,5 +1,7 @@
 import {Component, inject} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
+import {SharedPersonaDataService} from '../shared-persona-data.service';
+import {Subject, takeUntil} from 'rxjs';
 
 @Component({
   selector: 'app-persona-page',
@@ -13,27 +15,41 @@ export class PersonaPageComponent {
   route: ActivatedRoute = inject(ActivatedRoute);
   personaName = "";
   personaDict: any = personas;
-  condition: boolean = false;
+  persona: any;
 
-  constructor() {
+  ngOnInit(): void{
+    /*
+    this.sharedPersonaService.getData$().pipe(takeUntil(this.unsubscribe)).subscribe(persona => {
+      this.persona = persona;
+    })*/
+
+    //this.sharedPersonaService.getData$().subscribe(persona => this.persona = persona);
+  }
+
+
+  constructor(private sharedPersonaService: SharedPersonaDataService) {
+
     this.personaName = String(this.route.snapshot.params['name']);
-    console.log(this.personaDict);
-    this.condition = checkPersona(this.personaName, this.personaDict);
+    //console.log(this.personaDict);
+    this.persona = checkPersona(this.personaName, this.personaDict);
 
-    console.log(this.condition);
-    if("abaddon" in this.personaDict)
-      console.log("yes");
+    console.log(this.persona);
 
     function checkPersona(key: any, dict: any){
       const lowerKey = key.toLowerCase();
 
-      for(const dictKey in dict){
-        if(dictKey.toLowerCase() === lowerKey){
-          return true;
+      for (const dictKey in dict) {
+        if (dictKey.toLowerCase() === lowerKey) {
+
+          return dict[key];
         }
       }
 
-      return false;
+      return null;
     }
   }
+
+  protected readonly elements = elements;
+  protected readonly Object = Object;
+  protected readonly stats = stats;
 }

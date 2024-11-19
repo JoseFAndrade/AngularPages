@@ -16,7 +16,7 @@
     </tr>
     @for (persona of personaArray; track $index){
       <tr>
-        <td> <a [routerLink]="['/persona', persona[0]]"> {{persona[0]}}</a></td>
+        <td> <a [routerLink]="['/persona', persona[0]]" > {{persona[0]}}</a></td>
         <td> {{persona[1].arcana}} </td>
         <td> {{persona[1].level}}</td>
       </tr>
