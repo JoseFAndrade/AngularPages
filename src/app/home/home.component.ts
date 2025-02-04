@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
-import {SharedPersonaDataService} from '../shared-persona-data.service';
+import {SharedPersonaDataService} from '../../shared-persona-data.service';
+import {NavigationComponent} from '../navigation/navigation.component';
 
 @Component({
   selector: 'app-home',
@@ -8,7 +9,8 @@ import {SharedPersonaDataService} from '../shared-persona-data.service';
   imports: [
     RouterOutlet,
     RouterLink,
-    RouterLinkActive
+    RouterLinkActive,
+    NavigationComponent
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'

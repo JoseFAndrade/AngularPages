@@ -1,6 +1,6 @@
 import {Component, inject} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {SharedPersonaDataService} from '../shared-persona-data.service';
+import {SharedPersonaDataService} from '../../shared-persona-data.service';
 import {Subject, takeUntil} from 'rxjs';
 
 @Component({
