@@ -1,0 +1,25 @@
+<p>skill-list works!</p>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Type</th>
+    <th>Cost</th>
+    <th>Personas</th>
+    <th>Negotiations</th>
+    <th>SKill Card</th>
+  </tr>
+
+  @for(skill of skillArray; track $index){
+    <tr>
+      <td> {{skill[0]}}</td>
+      <td> {{skill[1].element}}</td>
+      <td> {{skill[1].cost}}</td>
+      <td> {{ fixPersonaList(skill[1].personas) }} </td>
+      <td> {{skill[1].talk}}</td>
+      <td> {{skill[1].fuse}}</td>
+    </tr>
+  }
+
+
+</table>
