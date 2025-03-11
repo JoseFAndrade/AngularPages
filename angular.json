@@ -29,7 +29,8 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": ["./script/searchEngine.js", "./script/Data/Persona5Data.js", "./script/Data/Persona5SkillData.js"]
+            "scripts": ["./script/searchEngine.js", "./script/Data/Persona5Data.js", "./script/Data/Persona5SkillData.js",
+              "./script/Data/Persona5RoyalRules.js"]
           },
           "configurations": {
             "production": {

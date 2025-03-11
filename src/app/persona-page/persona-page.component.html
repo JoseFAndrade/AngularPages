@@ -9,7 +9,6 @@
   <h3>Level: {{persona.level}}</h3>
 
   <h2> Stats</h2>
-
   <table>
     <tr>
       @for(stat of stats; track $index){
@@ -71,7 +70,11 @@
 } @else {
   <p> not in there</p>
 }
-<h1> Name of the persona passed was {{ personaName }}</h1>
+
+
+<!-- stop using headers for the style -->
+<h1> Combinations</h1>
+<app-fusion-calculator></app-fusion-calculator>
 
 
 </body>

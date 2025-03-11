@@ -2,11 +2,14 @@ import {Component, inject} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {SharedPersonaDataService} from '../../shared-persona-data.service';
 import {Subject, takeUntil} from 'rxjs';
+import {FusionCalculatorComponent} from '../fusion-calculator/fusion-calculator.component';
 
 @Component({
   selector: 'app-persona-page',
   standalone: true,
-  imports: [],
+  imports: [
+    FusionCalculatorComponent
+  ],
   templateUrl: './persona-page.component.html',
   styleUrl: './persona-page.component.css'
 })

@@ -1,5 +1,4 @@
-<p>skill-list works!</p>
-
+<app-navigation></app-navigation>
 <table>
   <tr>
     <th>Name</th>
@@ -14,10 +13,13 @@
     <tr>
       <td> {{skill[0]}}</td>
       <td> {{skill[1].element}}</td>
-      <td> {{skill[1].cost}}</td>
-      <td> {{ fixPersonaList(skill[1].personas) }} </td>
-      <td> {{skill[1].talk}}</td>
-      <td> {{skill[1].fuse}}</td>
+      <td> {{skill[1].cost ?? "N/A"}}</td>
+      <td> @for(combination of fixPersonaList(skill[1].personas); track $index){
+        <a [routerLink]="['/persona',combination.item1]"> {{combination.item1}}</a> {{combination.item2}}
+      }</td>
+      <!--<td> {{ fixPersonaList(skill[1].personas) }} </td> -->
+      <td> {{skill[1].talk ?? ""}}</td>
+      <td> {{skill[1].fuse ?? ""}}</td>
     </tr>
   }
 

@@ -1,9 +1,14 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {NavigationComponent} from '../navigation/navigation.component';
+import {RouterLink} from '@angular/router';
 
 @Component({
   selector: 'app-skill-list',
   standalone: true,
-  imports: [],
+  imports: [
+    NavigationComponent,
+    RouterLink
+  ],
   templateUrl: './skill-list.component.html',
   styleUrl: './skill-list.component.css'
 })
@@ -19,18 +24,19 @@ export class SkillListComponent {
       this.skillArray.push([key,(this.skillMapRoyal)[key]]);
     }
 
-    console.log(this.skillArray);
   }
 
   fixPersonaList( personaList: any){
-    let result: String[] = [];
+    let level: String[] = [];
+    let persona: String[] = [];
 
     for(let key in personaList){
-      result.push(key + " (" + personaList[key] + ") ");
+      //result.push(key + " (" + personaList[key] + ") ");
+      persona.push(key);
+      level.push( " ("+ personaList[key] + ") " );
     }
 
-    console.log(result);
-
-    return result.join(", ");
+    return persona.map((item, index) => ({item1: item, item2: level[index]}));
+    //return result.join(", ");
   }
 }
