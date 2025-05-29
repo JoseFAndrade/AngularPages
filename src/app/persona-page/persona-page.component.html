@@ -51,7 +51,7 @@
     }
 
   </table>
-  <h3> Skill relations</h3>
+  <h3> Elemental relations</h3>
   <table>
     <tr>
     @for (element of elements; track $index){
@@ -73,8 +73,9 @@
 
 
 <!-- stop using headers for the style -->
-<h1> Combinations</h1>
-<app-fusion-calculator></app-fusion-calculator>
+<div>
+  <app-fusion-calculator [currentPersona]="persona2"></app-fusion-calculator>
+</div>
 
 
 </body>

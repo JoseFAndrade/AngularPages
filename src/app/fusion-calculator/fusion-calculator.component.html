@@ -1,12 +1,29 @@
-<p>fusion-calculator works!</p>
 
-
-
+<h1> Persona Fusions to {{currentPersona?.name}}</h1>
 <table>
   <tr>
-    <th>Persona Fusion</th>
-    <th>Result </th>
+    <th>Persona One</th>
+    <th>Persona Two</th>
   </tr>
+
+  @if(currentPersona != undefined){
+
+    @for(fusion of getMatchingFusions(currentPersona.name,currentPersona.arcana); track $index){
+      <tr>
+        <td>{{fusion.fusionOne.name}}</td>
+        <td>{{fusion.fusionTwo.name}}</td>
+      </tr>
+    }
+  }
+</table>
+
+<h1>Persona Fusions from {{currentPersona?.name}}</h1>
+<table>
+  <tr>
+    <th>Persona</th>
+    <th>Result</th>
+  </tr>
+
 
 
 </table>
