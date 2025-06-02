@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Persona} from '../../Persona';
 import {PersonaFusion} from '../../PersonaFusion';
+import {PageTracker} from '../../PageTracker';
 
 @Component({
   selector: 'app-fusion-calculator',
@@ -21,6 +22,13 @@ export class FusionCalculatorComponent implements OnInit {
   personaByArcana: {[arcana: string]: Persona[]} = {};
   arcanaCombos = arcana2CombosRoyal;
   totalCombinations: any = {};
+
+  //data needed for the html to function
+  matchingFusions: PersonaFusion[] | undefined = undefined;
+  fusionsFrom: PersonaFusion[] | undefined = undefined;
+  p1: PageTracker;
+  p2: PageTracker;
+
 
   @Input() currentPersona: Persona | undefined;
 
@@ -95,6 +103,12 @@ export class FusionCalculatorComponent implements OnInit {
       });
     }
 
+    if(this.currentPersona != undefined) {
+      this.matchingFusions = this.getMatchingFusions(this.currentPersona.name, this.currentPersona.arcana);
+    }
+
+    this.p1 = new PageTracker(1,this.matchingFusions,this.currentPersona);
+    this.p2 = new PageTracker(1, this.fusionsFrom, this.currentPersona);
   }
 
   populateBothPersonaList(){
@@ -258,9 +272,6 @@ export class FusionCalculatorComponent implements OnInit {
 
   getMatchingFusions(name: string, arcana: string){
     let list: PersonaFusion[] = [];
-    console.log("did this even run");
-    console.log(name);
-    console.log(arcana);
     this.getAllPersonaFusionsWithinArcana(arcana).forEach((function (value){
       if(value.result.name === name && !value.fusionOne.rare && !value.fusionTwo.rare ){
         list.push(value);
@@ -268,5 +279,23 @@ export class FusionCalculatorComponent implements OnInit {
     }))
 
     return list;
+  }
+
+  /*** This funtion will return us the elements that will be displayed for the table | 10 elements each page ***/
+  getPageData(pagetracker: PageTracker){
+    //very rare case of this not generating then we need to generate it ourselves
+    //let data : PersonaFusion[] = [];
+    if(pagetracker.data == undefined && this.currentPersona != undefined) {
+      pagetracker.data = this.getMatchingFusions(this.currentPersona.name, this.currentPersona?.arcana);
+    }
+    return pagetracker.data?.slice( ( (pagetracker.page - 1 ) * 10 )  , (pagetracker.page * 10) );
+  }
+
+  getPageData2(pagetracker: PageTracker){
+    if(pagetracker.data == undefined && this.currentPersona != undefined){
+      pagetracker.data = this.outsidefusions(this.currentPersona);
+    }
+    return pagetracker.data?.slice( ( (pagetracker.page - 1 ) * 10 )  , (pagetracker.page * 10) );
+
   }
 }

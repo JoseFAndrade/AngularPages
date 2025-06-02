@@ -8,7 +8,7 @@
 
   @if(currentPersona != undefined){
 
-    @for(fusion of getMatchingFusions(currentPersona.name,currentPersona.arcana); track $index){
+    @for(fusion of getPageData(p1); track $index){
       <tr>
         <td>{{fusion.fusionOne.name}}</td>
         <td>{{fusion.fusionTwo.name}}</td>
@@ -16,14 +16,28 @@
     }
   }
 </table>
-
-<h1>Persona Fusions from {{currentPersona?.name}}</h1>
+<button class = "previous" (click) = "p1.decreasePage()"> Previous </button>
+<button class = "next" (click)="p1.increasePage()"> Next </button>
+<h1>Persona Fusions With {{currentPersona?.name}}</h1>
 <table>
   <tr>
     <th>Persona</th>
     <th>Result</th>
   </tr>
 
-
-
+  @if(currentPersona != undefined){
+    @for( fusion of getPageData2(p2); track $index){
+      <tr>
+        <td>@if(fusion.fusionOne.name != currentPersona.name){
+          {{fusion.fusionOne.name}}
+        } @else {
+          {{fusion.fusionTwo.name}}
+        }
+        </td>
+        <td>{{fusion.result.name}}</td>
+      </tr>
+    }
+  }
 </table>
+<button class = "previous" (click) = "p2.decreasePage()"> Previous </button>
+<button class = "next" (click)="p2.increasePage()"> Next </button>
